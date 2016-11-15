@@ -2,7 +2,7 @@ language: c
 addons:
   apt:
     sources:
-      - ppa:duggan/bats
+      - duggan/bats
     packages:
       - bats
 script: make test
