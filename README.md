@@ -24,6 +24,7 @@ To initialize an org from your current config:
 
 ```bash
 $ chchef init mycompany
+You are now using Chef environment 'mycompany'
 ```
 
 This will also automatically switch you to the **mycompany**
@@ -36,6 +37,14 @@ to them:
 
 ```bash
 $ chchef mynewcompany
+You are now using Chef environment 'mynewcompany'
+```
+
+If `chchef` can't find configuration in that folder...
+
+```bash
+$ chchef bogus
+No such file or directory ~/.chef/bogus
 ```
 
 ## Development
@@ -46,7 +55,11 @@ To run shellcheck:
 $ make check
 ````
 
-Tests are coming soon.
+To run tests:
+
+```bash
+$ make test
+```
 
 This project uses the MIT License.
 

@@ -43,7 +43,7 @@ check:
 	shellcheck share/$(NAME)/*.sh
 
 test:
-	bats test/**/*.bats
+	bats test
 
 tag:
 	git push origin master
