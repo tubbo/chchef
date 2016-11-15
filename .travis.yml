@@ -1,0 +1,11 @@
+language: c
+script: make test
+after_success: make install
+deploy:
+  provider: releases
+  api_key:
+    secure: xjS9P3GwmWz/A6kNz6uun/N7K2DluLgu+cSuKDdfwKefjAnyU7n+ldTnT0uBqMQ5SoM3l2dKnvOD5ydr09lV6vIVj3VTEMoiv6f0+VGmU69vGMZmfDN+Q9QfLhFhpbncn6W/AdebNGw8Tpq3VAwF+ankdYn9K2CJGMhNerTYZMVpHvqF6rUQ+RCQxXarOFqRF1BynBAN/lMr2azUWhR1HLaB0zRU4EW1tYIBPzxutOcxihClCnbMnDPlSp+JDQxiXtGSIQwqBDCGW/vPSRZAQwqAqYnm6z5YJpFTKDPDZSFEbVorfdfIa0I5jxE7YWMpDYfaCe0cyV8+RsyjaCrshG8uP4uLP3gya4s346+z6h/siHvS5AaraqZtIOWwfWJBeuUEgNd+/zUc7qwUBXhu6O2GWYuEwVIktEpuXRzosH2zlzQ3IaUUd6SA9OEjXnf1x0i/3V7wm3ncBiFUY4ysBaPnCwuy4ObyShahdh7w0A35p6XOiOOuvg+rZiRk+Tkfqah5K/75lvYW2bx1DhG4a4Higtmn3WmtdCXCIBHRCSnE7qBXBmeyzEjURZTNtWNkoSTOfjieqSaX+210Yfenkx+WUm2PYuMDT+aAvKmNVKctVUkW1DuURsQYcZWwCLcLG0Vwq6rSiaICouRXgBPqJNksRoxB987QPASNC0sz6Yc=
+  file: pkg
+  skip_cleanup: true
+  on:
+    tags: true
