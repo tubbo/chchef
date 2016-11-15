@@ -1,4 +1,6 @@
 language: c
+apt:
+  - bats
 script: make test
 after_success: make install
 deploy:
