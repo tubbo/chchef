@@ -27,6 +27,7 @@ chchef() {
       if [[ -f "$HOME/.chef/$name/$name-validator.pem" ]]; then
         ln -s "$HOME/.chef/$name/$name-validator.pem" "$HOME/.chef/$name-validator.pem"
       fi
+      echo "You are now using ~/.chef environment $name"
     else
       echo "No such file or directory: $HOME/.chef/$1"
       return
