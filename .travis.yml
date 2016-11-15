@@ -1,6 +1,10 @@
 language: c
-apt:
-  - bats
+addons:
+  apt:
+    sources:
+      - ppa:duggan/bats
+    packages:
+      - bats
 script: make test
 after_success: make install
 deploy:
