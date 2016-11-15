@@ -4,6 +4,16 @@ Change your current **~/.chef** environment.
 
 ## Installation
 
+Clone this repo and run `make install`:
+
+```bash
+$ git clone https://github.com/tubbo/chchef.git
+$ cd chchef
+$ make install
+```
+
+Then in your shell init file (like **~/.bashrc**)...
+
 ```bash
 source "/usr/local/share/chchef/chchef.sh"
 ```
