@@ -1,1 +1,4 @@
 test/fixtures
+**/*.DS_Store
+**/*.swp
+pkg/*.tar.gz
