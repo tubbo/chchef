@@ -1,5 +1,5 @@
 NAME=chchef
-VERSION=0.1.0
+VERSION=0.2.0
 AUTHOR=tubbo
 URL=https://github.com/$(AUTHOR)/$(NAME)
 
@@ -16,7 +16,7 @@ SIG=$(PKG).asc
 PREFIX?=/usr/local
 DOC_DIR=$(PREFIX)/share/doc/$(PKG_NAME)
 
-all:
+all: clean share/man/man1/chchef.1
 
 pkg:
 	mkdir $(PKG_DIR)
@@ -38,6 +38,7 @@ verify: $(PKG) $(SIG)
 
 clean:
 	rm -f $(PKG) $(SIG)
+	rm -f share/doc/man1/$(NAME).1
 
 check:
 	shellcheck share/$(NAME)/*.sh
@@ -63,12 +64,12 @@ uninstall:
 	rm -rf $(DESTDIR)$(DOC_DIR)
 
 /usr/local/bin/kramdown-man:
-	@sudo gem install kramdown-man
+	sudo gem install kramdown-man
 
-share/man/man1/chchef.1: /usr/local/bin/kramdown-man docs/man/chchef.1.md
-	@mkdir -p share/man/man1
-	@kramdown-man docs/man/chchef.1.md > share/man/man1/chchef.1
-	@git add share/man/man1/chchef.1
-	@git commit -m "Regenerated docs for ${VERSION}" share/man/man1/chchef.1
+share/man/man1/chchef.1: /usr/local/bin/kramdown-man docs/man/${NAME}.1.md
+	mkdir -p share/man/man1
+	kramdown-man docs/man/${NAME}.1.md > share/man/man1/${NAME}.1
+	git add share/man/man1/chchef.1
+	git commit -m "Regenerated docs for ${VERSION}" share/man/man1/chchef.1
 
 .PHONY: build download sign verify clean check test tag release install uninstall all

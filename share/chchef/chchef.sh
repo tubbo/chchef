@@ -8,7 +8,8 @@ chchef() {
   fi
 
   if [[ -z "$1" ]]; then
-    echo "Usage: chchef [--init] NAME [CREDENTIALS]"
+    echo "Usage: chchef [--init] ORG_NAME [ORG_CREDENTIALS_FILE]"
+    echo "Run \`man chef\` for more information"
     return
   fi
 
@@ -49,11 +50,9 @@ chchef() {
       if [[ -f "$CHEF_HOME/$name/$name-validator.pem" ]]; then
         ln -s "$CHEF_HOME/$name/$name-validator.pem" "$CHEF_HOME/$name-validator.pem"
       fi
-      # report to user that env changed successfully
-      echo "You are now using Chef environment '$name'"
     else
       # report to user which dir could not be found
-      echo "No such file or directory: $CHEF_HOME/$1"
+      echo "chchef: no such file or directory '$CHEF_HOME/$1'"
       return
     fi
 
