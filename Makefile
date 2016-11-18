@@ -62,7 +62,10 @@ uninstall:
 	for file in $(INSTALL_FILES); do rm -f $(DESTDIR)$(PREFIX)/$$file; done
 	rm -rf $(DESTDIR)$(DOC_DIR)
 
-share/man/man1/chchef.1: docs/man/chchef.1.md
+/usr/local/bin/kramdown-man:
+	@sudo gem install kramdown-man
+
+share/man/man1/chchef.1: /usr/local/bin/kramdown-man docs/man/chchef.1.md
 	@mkdir -p share/man/man1
 	@kramdown-man docs/man/chchef.1.md > share/man/man1/chchef.1
 	@git add share/man/man1/chchef.1
