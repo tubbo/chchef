@@ -23,21 +23,27 @@ source "/usr/local/share/chchef/chchef.sh"
 To initialize an org from your current config:
 
 ```bash
-$ chchef init mycompany
+$ chchef --init mycompany
 You are now using Chef environment 'mycompany'
 ```
 
 This will also automatically switch you to the **mycompany**
 environment.
 
-When you get new environments, add them in named subdirectories within
-the **~/.chef/** directory, representing the environment or chef server
-that they connect to. You can then run the following command to switch
-to them:
+When you get a new environment setup from a Chef Server, download the
+tarball and extract it into **~/.chef** using `chchef`:
 
 ```bash
-$ chchef mynewcompany
-You are now using Chef environment 'mynewcompany'
+$ chchef --init mynewcompany me-mynewcompany.tar.gz
+```
+
+You can also add existing environments as named subdirectories within
+the **~/.chef** directory. Then, run the following command to switch to
+them:
+
+```bash
+$ chchef somelegacyorg
+You are now using Chef environment 'somelegacyorg'
 ```
 
 If `chchef` can't find configuration in that folder...

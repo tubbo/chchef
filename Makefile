@@ -6,7 +6,7 @@ URL=https://github.com/$(AUTHOR)/$(NAME)
 DIRS=share
 INSTALL_DIRS=`find $(DIRS) -type d 2>/dev/null`
 INSTALL_FILES=`find $(DIRS) -type f 2>/dev/null`
-DOC_FILES=*.md *.txt
+DOC_FILES=docs/man/*.md
 
 PKG_DIR=pkg
 PKG_NAME=$(NAME)-$(VERSION)
@@ -50,7 +50,7 @@ tag:
 	git tag -s -m "Release v$(VERSION)" v$(VERSION)
 	git push origin master --tags
 
-release: tag download sign
+release: share/man/man1/chchef.1 tag download sign
 
 install:
 	for dir in $(INSTALL_DIRS); do mkdir -p $(DESTDIR)$(PREFIX)/$$dir; done
@@ -61,5 +61,11 @@ install:
 uninstall:
 	for file in $(INSTALL_FILES); do rm -f $(DESTDIR)$(PREFIX)/$$file; done
 	rm -rf $(DESTDIR)$(DOC_DIR)
+
+share/man/man1/chchef.1: docs/man/chchef.1.md
+	@mkdir -p share/man/man1
+	@kramdown-man docs/man/chchef.1.md > share/man/man1/chchef.1
+	@git add share/man/man1/chchef.1
+	@git commit -m "Regenerated docs for ${VERSION}" share/man/man1/chchef.1
 
 .PHONY: build download sign verify clean check test tag release install uninstall all
