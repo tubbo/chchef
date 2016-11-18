@@ -7,9 +7,13 @@ chchef() {
     CHEF_HOME="$HOME/.chef"
   fi
 
+  CHEF_ENV_PATH="$CHEF_HOME/.chchef-current-env"
+  CHEF_ENV=$(cat "$CHEF_ENV_PATH")
+
   if [[ -z "$1" ]]; then
     echo "Usage: chchef [--init] ORG_NAME [ORG_CREDENTIALS_FILE]"
     echo "Run \`man chef\` for more information"
+    echo "You are currently within the '$CHEF_ENV' Chef environment"
     return
   fi
 
@@ -50,6 +54,7 @@ chchef() {
       if [[ -f "$CHEF_HOME/$name/$name-validator.pem" ]]; then
         ln -s "$CHEF_HOME/$name/$name-validator.pem" "$CHEF_HOME/$name-validator.pem"
       fi
+      echo "$name" > "$CHEF_ENV_PATH"
     else
       # report to user which dir could not be found
       echo "chchef: no such file or directory '$CHEF_HOME/$1'"

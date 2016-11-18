@@ -1,3 +1,7 @@
+#
+# Build scripts for chchef. Shamelessly stolen from postmodern's
+# software.
+#
 NAME=chchef
 VERSION=0.2.0
 AUTHOR=tubbo
