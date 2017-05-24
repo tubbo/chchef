@@ -23,7 +23,7 @@ DOC_DIR=$(PREFIX)/share/doc/$(PKG_NAME)
 all: clean share/man/man1/chchef.1
 
 pkg:
-	mkdir $(PKG_DIR)
+	mkdir -p $(PKG_DIR)
 
 download: pkg
 	wget -O $(PKG) $(URL)/archive/v$(VERSION).tar.gz
